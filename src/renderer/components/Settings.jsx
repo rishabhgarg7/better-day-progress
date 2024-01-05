@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-// import TimePicker from 'react-time-picker';
-
+import React from 'react';
 import Switch from './UI/Switch';
-import Button from './UI/Button';
+import Dropdown from './UI/Dropdown';
 import DayCheckbox from './UI/Checkbox';
 import TimeRangeInput from './UI/TimeRangeInput';
 
@@ -62,9 +60,13 @@ export default function Component() {
 
         <div className="text-show flex justify-between items-center mb-2">
           <span>Text</span>
-          <Button variant="primary" size="sm" className="bg-[#313131]">
-            Time Left
-          </Button>
+          <Dropdown
+            stateKey="menubar.text"
+            options={[
+              { value: 'showTimeLeft', label: 'Time Left' },
+              { value: 'showPercentageDone', label: 'Percentage Done' },
+            ]}
+          />
         </div>
         <div className="flex justify-between items-center">
           <span>Show while inactive</span>

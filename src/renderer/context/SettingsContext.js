@@ -67,6 +67,7 @@ export function SettingsProvider({ children }) {
       });
       return newSettings;
     });
+    window.electron.ipcRenderer.sendMessage('settings-updated');
   };
 
   return (
