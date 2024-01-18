@@ -39,7 +39,10 @@ export default class TrayBuilder {
           shell.openExternal('https://www.buymeacoffee.com/rishabhgarg'),
       },
       { type: 'separator' },
-
+      {
+        label: 'v1.0.1',
+        enabled: false,
+      },
       {
         label: 'Quit Better Day Progress',
         accelerator: 'Command+Q',
@@ -90,7 +93,10 @@ export function updateTrayMenu(tray: Tray, newContextMenu: any) {
         shell.openExternal('https://www.buymeacoffee.com/rishabhgarg'),
     },
     { type: 'separator' },
-
+    {
+      label: 'v1.0.1',
+      enabled: false,
+    },
     {
       label: 'Quit Better Day Progress',
       accelerator: 'Command+Q',
