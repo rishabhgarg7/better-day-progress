@@ -34,10 +34,13 @@ export function SettingsProvider({ children }) {
       trackingDays: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
     },
     menubar: {
-      text: 'showTimeLeft',
+      text: 'timeLeft',
       showWhileInactive: false,
     },
-    breakTimeRange: { start: '13:00', end: '14:00' },
+    breakTime: {
+      enabled: true,
+      breakTimeRange: { start: '13:00', end: '14:00' },
+    },
     bell: {
       ring: true,
       ringOn: 'percentage',
@@ -51,6 +54,7 @@ export function SettingsProvider({ children }) {
   useEffect(() => {
     // Update electron-store when settings change
     window.electron.store.set('settings-data', settings);
+    window.electron.ipcRenderer.sendMessage('settings-updated', settings);
   }, [settings]);
 
   const updateSettings = (path, value) => {
@@ -67,7 +71,6 @@ export function SettingsProvider({ children }) {
       });
       return newSettings;
     });
-    window.electron.ipcRenderer.sendMessage('settings-updated');
   };
 
   return (

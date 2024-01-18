@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { SettingsContext } from '../context/SettingsContext';
 import Switch from './UI/Switch';
 import Dropdown from './UI/Dropdown';
 import DayCheckbox from './UI/Checkbox';
 import TimeRangeInput from './UI/TimeRangeInput';
+import getNestedValue from '../utils/index';
 
 export default function Component() {
+  const { settings, updateSettings } = useContext(SettingsContext);
+  const isBreakTimeEnabled = getNestedValue(settings, 'breakTime.enabled');
+  console.log({ isBreakTimeEnabled });
+
   const days = [
     'Monday',
     'Tuesday',
@@ -63,8 +69,11 @@ export default function Component() {
           <Dropdown
             stateKey="menubar.text"
             options={[
-              { value: 'showTimeLeft', label: 'Time Left' },
-              { value: 'showPercentageDone', label: 'Percentage Done' },
+              { value: 'none', label: 'None' },
+              { value: 'timeLeft', label: 'Time Left' },
+              { value: 'timeOver', label: 'Time Over' },
+              { value: 'percentageLeft', label: 'Percentage Left' },
+              { value: 'percentageOver', label: 'Percentage Over' },
             ]}
           />
         </div>
@@ -73,15 +82,23 @@ export default function Component() {
           <Switch id="show-login" valuePath="menubar.showWhileInactive" />
         </div>
       </div>
-      <div className="break-time-range mt-4 flex justify-between items-center mb-4">
-        <span>Break Time Range</span>
-        <div className="flex items-center justify-center">
-          <TimeRangeInput
-            startTimeKey="breakTimeRange.start"
-            endTimeKey="breakTimeRange.end"
-          />
+      {/* <div className="break-time-range px-2 mt-6 flex flex-col justify-between  mb-4">
+        <div className="flex justify-between items-center">
+          <span>Want to include break?</span>
+          <Switch id="show-login" valuePath="breakTime.enabled" />
         </div>
-      </div>
+        {isBreakTimeEnabled && (
+          <div className="mt-4 flex justify-between items-center">
+            <span>Break Time Range</span>
+            <div className="flex items-center justify-center">
+              <TimeRangeInput
+                startTimeKey="breakTime.breakTimeRange.start"
+                endTimeKey="breakTime.breakTimeRange.end"
+              />
+            </div>
+          </div>
+        )}
+      </div> */}
     </div>
   );
 }
