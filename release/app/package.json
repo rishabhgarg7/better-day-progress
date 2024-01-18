@@ -1,7 +1,7 @@
 {
-  "name": "BDP-app-pkgjson",
-  "version": "1.0.8",
-  "description": "A foundation for scalable desktop apps",
+  "name": "BDP",
+  "version": "1.0.1",
+  "description": "Day progress but a lot better",
   "license": "MIT",
   "author": {
     "name": "Rishabh Garg",

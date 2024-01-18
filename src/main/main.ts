@@ -33,7 +33,6 @@ const getAssetPath = (...paths: string[]): string => {
 async function calculateUpdateProgress(
   newSettings = store.get('settings-data'),
 ) {
-  console.log('in calculateUpdateProgress: ', newSettings);
   hanndleLaunchAtLogin(app, newSettings);
   const isDayProgressActive = isActiveAppZone(newSettings);
   let newTitleOfApp = '';

@@ -9,7 +9,6 @@ import getNestedValue from '../utils/index';
 export default function Component() {
   const { settings, updateSettings } = useContext(SettingsContext);
   const isBreakTimeEnabled = getNestedValue(settings, 'breakTime.enabled');
-  console.log({ isBreakTimeEnabled });
 
   const days = [
     'Monday',

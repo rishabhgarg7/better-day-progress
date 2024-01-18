@@ -108,7 +108,6 @@ export function calculateTimeProgress(totalWorkMinutes, elapsedMinutes) {
   const percentageLeft = 100 - percentageOver;
 
   const minutesLeft = totalWorkMinutes - elapsedMinutes;
-  console.log({ totalWorkMinutes, elapsedMinutes, minutesLeft });
 
   const timeOver = formatTime(elapsedMinutes);
   const timeLeft = formatTime(minutesLeft);
@@ -143,7 +142,6 @@ export function updateProgressInApp(
     newTitleOfApp = '';
   } else {
     const progress = calculateTimeProgress(totalWorkMinutes, elapsedMinutes);
-    console.log({ progress });
     newTitleOfApp = progress[newSettings.menubar.text] || '';
   }
   updateTrayTitle(tray, newTitleOfApp);
